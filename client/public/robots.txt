@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xrsave-yt.app/sitemap.xml
