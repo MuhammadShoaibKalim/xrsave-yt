@@ -39,9 +39,10 @@ const convertAudioStream = (inputStream, outputFormat, bitrate, res) => {
     let command = ffmpeg(inputStream);
 
     if (typeof inputStream === 'string' && inputStream.startsWith('http')) {
+      // In fluent-ffmpeg, inputOptions apply to the last added input
       command = command.inputOptions([
         '-user_agent', 'googlebot',
-        '-headers', 'Referer: https://www.youtube.com/\r\n'
+        '-referer', 'https://www.youtube.com/'
       ]);
     }
 
