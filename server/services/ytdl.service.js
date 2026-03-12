@@ -30,7 +30,7 @@ const getVideoInfo = async (url) => {
       return processYtdlInfo(info);
     } catch (ytdlErr) {
       if (ytdlErr.message?.includes('403') || ytdlErr.message?.includes('playable formats') || ytdlErr.message?.includes('sign in')) {
-        logger.warn('ytdl-core failed, attempting yt-dlp fallback', { videoId, error: ytdlErr.message });
+        logger.info('YouTube extraction fallback: ytdl-core limit reached, switching engine', { videoId, reason: ytdlErr.message });
         return await getInfoViaYtdlp(normalizedUrl);
       }
       throw ytdlErr;
@@ -257,7 +257,7 @@ const getInfoForDownload = async (url) => {
   try {
     return await ytdl.getInfo(normalizedUrl, { requestOptions: { timeout: 3500, maxRetries: 0 } });
   } catch (err) {
-    logger.warn('ytdl-core getInfo failed for download, attempting yt-dlp fallback');
+    logger.info('Download engine: Switching to yt-dlp for better compatibility');
     // For downloads, we might need the full yt-dlp JSON
     const info = await ytdlp(normalizedUrl, {
       dumpSingleJson: true,
