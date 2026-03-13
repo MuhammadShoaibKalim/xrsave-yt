@@ -4,7 +4,6 @@ import { AnimatePresence } from 'framer-motion';
 import Layout from './components/layout/Layout';
 import LoadingPage from './components/ui/LoadingPage';
 
-// Lazy load all pages
 const Home = lazy(() => import('./pages/Home'));
 const VideoDownload = lazy(() => import('./pages/VideoDownload'));
 const AudioDownload = lazy(() => import('./pages/AudioDownload'));
