@@ -29,8 +29,9 @@ const getVideoInfo = async (url) => {
       info = await ytdl.getInfo(normalizedUrl, { requestOptions: { timeout: 3500, maxRetries: 0 } });
       return processYtdlInfo(info);
     } catch (ytdlErr) {
-      if (ytdlErr.message?.includes('403') || ytdlErr.message?.includes('playable formats') || ytdlErr.message?.includes('sign in')) {
-        logger.info('YouTube extraction fallback: ytdl-core limit reached, switching engine', { videoId, reason: ytdlErr.message });
+      const msg = (ytdlErr.message || '').toLowerCase();
+      if (msg.includes('403') || msg.includes('playable formats') || msg.includes('sign in') || msg.includes('timeout') || msg.includes('econnreset') || msg.includes('und_err_connect_timeout')) {
+        logger.info('YouTube extraction fallback: ytdl-core failed or timed out, switching engine', { videoId, reason: ytdlErr.message });
         return await getInfoViaYtdlp(normalizedUrl);
       }
       throw ytdlErr;
