@@ -11,8 +11,8 @@ const navLinks = [
   { to: '/audio', label: 'Audio MP3' },
   { to: '/thumbnail', label: 'Thumbnail' },
   { to: '/shorts', label: 'Shorts' },
-  { to: '/subtitle', label: 'Subtitles' },
-  { to: '/playlist', label: 'Playlist' },
+  { to: '/subtitle', label: 'Subtitles', disabled: true },
+  { to: '/playlist', label: 'Playlist', disabled: true },
   { to: '/extract', label: 'Extract Info' },
 ];
 
@@ -61,18 +61,29 @@ const Navbar = () => {
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-1">
           {navLinks.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              className={({ isActive }) =>
-                `px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive
-                  ? 'text-brand-400 bg-brand-600/10'
-                  : 'text-gray-400 hover:text-white hover:bg-dark-700'
-                }`
-              }
-            >
-              {link.label}
-            </NavLink>
+            link.disabled ? (
+              <span
+                key={link.to}
+                className="px-3 py-2 rounded-lg text-sm font-medium text-gray-500 cursor-not-allowed flex items-center gap-1.5"
+                title="Will be available soon"
+              >
+                {link.label}
+                <span className="text-[10px] bg-dark-800/50 border border-dark-600/50 px-1.5 py-0.5 rounded text-gray-400">Soon</span>
+              </span>
+            ) : (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                className={({ isActive }) =>
+                  `px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive
+                    ? 'text-brand-400 bg-brand-600/10'
+                    : 'text-gray-400 hover:text-white hover:bg-dark-700'
+                  }`
+                }
+              >
+                {link.label}
+              </NavLink>
+            )
           ))}
         </div>
 
@@ -111,8 +122,8 @@ const Navbar = () => {
             </div>
           ) : (
             <div className="hidden sm:flex items-center gap-2">
-              <Link to="/login" className="btn-ghost text-sm">Sign In</Link>
-              <Link to="/register" className="btn-primary text-sm py-2">Get Started</Link>
+              {/* <Link to="/login" className="btn-ghost text-sm">Sign In</Link> */}
+              <Link to="/" className="btn-primary text-sm py-2">Get Started</Link>
             </div>
           )}
 
@@ -137,16 +148,27 @@ const Navbar = () => {
           >
             <div className="px-4 py-4 space-y-1">
               {navLinks.map((link) => (
-                <NavLink
-                  key={link.to}
-                  to={link.to}
-                  className={({ isActive }) =>
-                    `block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${isActive ? 'text-brand-400 bg-brand-600/10' : 'text-gray-400 hover:text-white hover:bg-dark-700'
-                    }`
-                  }
-                >
-                  {link.label}
-                </NavLink>
+                link.disabled ? (
+                  <div
+                    key={link.to}
+                    className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-gray-500 cursor-not-allowed"
+                    title="Will be available soon"
+                  >
+                    {link.label}
+                    <span className="text-[10px] bg-dark-800 border border-dark-600 px-1.5 py-0.5 rounded text-gray-400">Soon</span>
+                  </div>
+                ) : (
+                  <NavLink
+                    key={link.to}
+                    to={link.to}
+                    className={({ isActive }) =>
+                      `block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${isActive ? 'text-brand-400 bg-brand-600/10' : 'text-gray-400 hover:text-white hover:bg-dark-700'
+                      }`
+                    }
+                  >
+                    {link.label}
+                  </NavLink>
+                )
               ))}
               <div className="pt-2 border-t border-dark-600 mt-2">
                 {isAuthenticated ? (
