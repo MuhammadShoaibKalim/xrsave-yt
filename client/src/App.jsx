@@ -17,6 +17,14 @@ const Login = lazy(() => import('./pages/Login'));
 const Register = lazy(() => import('./pages/Register'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
+const About = lazy(() => import('./pages/About'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Suggestions = lazy(() => import('./pages/Suggestions'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const TermsConditions = lazy(() => import('./pages/TermsConditions'));
+const FAQ = lazy(() => import('./pages/FAQ'));
+const API = lazy(() => import('./pages/API'));
+
 function App() {
   return (
     <Layout>
@@ -34,6 +42,13 @@ function App() {
             <Route path="/history" element={<History />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/suggestions" element={<Suggestions />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-conditions" element={<TermsConditions />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/api" element={<API />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
