@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import {
   Video, Music, Image, FileText, Zap, PlaySquare, List,
-  ArrowRight, Shield, Globe, Download
+  ArrowRight, Shield, Globe, Download, Subtitles
 } from 'lucide-react';
 import PageWrapper from '../components/ui/PageWrapper';
 
@@ -38,7 +38,7 @@ const features = [
     color: 'from-pink-500 to-rose-500',
   },
   {
-    icon: FileText,
+    icon: Subtitles,
     label: 'Subtitles',
     desc: 'SRT, VTT, TXT formats',
     to: '/subtitle',
