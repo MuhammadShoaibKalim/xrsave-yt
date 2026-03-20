@@ -93,7 +93,7 @@ const Home = () => {
         {/* Background glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-600/8 blur-[120px] rounded-full pointer-events-none" />
 
-        <div className="max-w-4xl mx-auto text-center relative">
+        <div className="max-w-5xl mx-auto text-center relative">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -167,7 +167,7 @@ const Home = () => {
                   className="group card p-5 flex flex-col gap-3 hover:border-dark-400 transition-all duration-200 glow-hover"
                 >
                   <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${f.color} flex items-center justify-center flex-shrink-0`}>
-                    <f.icon className="w-5 h-5 text-white" />
+                    <f.icon className="w-5 h-5 text-true-white" />
                   </div>
                   <div>
                     <p className="font-display font-semibold text-white text-sm group-hover:text-brand-400 transition-colors">{f.label}</p>
@@ -186,7 +186,7 @@ const Home = () => {
           <h2 className="font-display text-3xl sm:text-4xl font-bold mb-12">
             How it works
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-12">
             {steps.map((step, i) => (
               <motion.div
                 key={step.n}
@@ -203,6 +203,37 @@ const Home = () => {
                 <p className="text-gray-500 text-sm leading-relaxed">{step.desc}</p>
               </motion.div>
             ))}
+          </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <Link to="/how-to-download" className="inline-flex items-center gap-2 btn-secondary px-6 py-2.5">
+              View Detailed Guide <ArrowRight className="w-4 h-4" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Explore Formats */}
+      <section className="px-4 py-20 border-t border-dark-800">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="bg-gradient-to-br from-brand-600/10 to-transparent border border-brand-500/20 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-brand-500/10 blur-[80px] rounded-full pointer-events-none" />
+
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4 relative z-10">
+              Download in <span className="text-brand-500">Any Format</span>
+            </h2>
+            <p className="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto mb-8 relative z-10">
+              From pure 4K ultra-HD videos to 320kbps MP3s, WebP thumbnails, and localized SRT subtitles—we support it all. No quality compromises.
+            </p>
+
+            <div className="relative z-10">
+              <Link to="/supported-formats" className="inline-flex items-center gap-2 btn-primary px-8 py-3.5 shadow-[0_0_20px_rgba(239,68,68,0.2)]">
+                See All Supported Formats <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

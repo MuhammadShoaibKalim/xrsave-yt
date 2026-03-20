@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Download, User, LogOut, History, ChevronDown } from 'lucide-react';
+import { Menu, X, Download, User, LogOut, History, ChevronDown, Sun, Moon } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
+import { useThemeStore } from '../../store/themeStore';
 import { authApi } from '../../services/api';
 import toast from 'react-hot-toast';
 
@@ -21,6 +22,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const { isAuthenticated, user, logout } = useAuthStore();
+  const { theme, toggleTheme } = useThemeStore();
   const location = useLocation();
 
   useEffect(() => {
@@ -51,7 +53,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group">
           <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center group-hover:bg-brand-500 transition-colors">
-            <Download className="w-4 h-4 text-white" />
+            <Download className="w-4 h-4 text-true-white" />
           </div>
           <span className="font-display font-bold text-xl tracking-tight">
             xrsave <span className="text-brand-500">YT</span>
@@ -89,13 +91,22 @@ const Navbar = () => {
 
         {/* Auth + Mobile */}
         <div className="flex items-center gap-3">
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 mr-1 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors"
+            title="Toggle Light/Dark Mode"
+          >
+            {theme === 'light' ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-400" />}
+          </button>
+
           {isAuthenticated ? (
             <div className="relative hidden sm:block">
               <button
                 onClick={() => setUserMenuOpen(!userMenuOpen)}
                 className="flex items-center gap-2 px-3 py-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors"
               >
-                <div className="w-7 h-7 rounded-full bg-brand-600 flex items-center justify-center text-xs font-bold">
+                <div className="w-7 h-7 rounded-full bg-brand-600 flex items-center justify-center text-xs font-bold text-true-white">
                   {user?.name?.[0]?.toUpperCase() || 'U'}
                 </div>
                 <span className="text-sm font-medium text-gray-300">{user?.name?.split(' ')[0]}</span>

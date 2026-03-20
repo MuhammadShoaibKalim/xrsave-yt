@@ -42,6 +42,12 @@ const PlaylistDownload = () => {
           <p className="text-gray-400 mt-2">Download entire playlists in batch</p>
         </div>
         <div className="space-y-4">
+          <div className="bg-dark-800/50 border border-brand-500/20 rounded-2xl p-8 text-center backdrop-blur-sm relative overflow-hidden group shadow-[0_0_30px_rgba(239,68,68,0.05)]">
+            <div className="absolute inset-0 bg-gradient-to-br from-brand-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <h2 className="text-xl font-semibold text-white mb-2 relative z-10">We are working on this!</h2>
+            <p className="text-gray-400 text-sm relative z-10">This feature will be available very soon. Stay tuned!</p>
+          </div>
+          {/*
           <div className="card p-4">
             <label className="block text-xs text-gray-500 mb-2 font-medium uppercase tracking-wider">Playlist URL</label>
             <input type="url" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="https://youtube.com/playlist?list=..." className="input-field" />
@@ -71,6 +77,7 @@ const PlaylistDownload = () => {
           <button onClick={handleSubmit} disabled={!url.trim() || isLoading} className="w-full btn-primary py-4 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
             {isLoading ? <><Loader2 className="w-4 h-4 animate-spin" /> Processing...</> : 'Queue Playlist Download'}
           </button>
+          */}
         </div>
       </div>
     </PageWrapper>

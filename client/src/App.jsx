@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Layout from './components/layout/Layout';
 import LoadingPage from './components/ui/LoadingPage';
+import ScrollToTop from './components/ui/ScrollToTop';
+import { useThemeStore } from './store/themeStore';
 
 const Home = lazy(() => import('./pages/Home'));
 const VideoDownload = lazy(() => import('./pages/VideoDownload'));
@@ -24,10 +26,23 @@ const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const TermsConditions = lazy(() => import('./pages/TermsConditions'));
 const FAQ = lazy(() => import('./pages/FAQ'));
 const API = lazy(() => import('./pages/API'));
+const Tutorial = lazy(() => import('./pages/Tutorial'));
+const Formats = lazy(() => import('./pages/Formats'));
 
 function App() {
+  const { theme } = useThemeStore();
+
+  React.useEffect(() => {
+    if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+  }, [theme]);
+
   return (
     <Layout>
+      <ScrollToTop />
       <AnimatePresence mode="wait">
         <Suspense fallback={<LoadingPage />}>
           <Routes>
@@ -49,6 +64,8 @@ function App() {
             <Route path="/terms-conditions" element={<TermsConditions />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/api" element={<API />} />
+            <Route path="/how-to-download" element={<Tutorial />} />
+            <Route path="/supported-formats" element={<Formats />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

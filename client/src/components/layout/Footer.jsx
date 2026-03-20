@@ -25,7 +25,7 @@ const Footer = () => {
           <div className="md:col-span-1">
             <Link to="/" className="inline-flex items-center gap-2 mb-6 group">
               <div className="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center group-hover:bg-brand-500 transition-colors shadow-lg shadow-brand-500/20">
-                <Download className="w-5 h-5 text-white" />
+                <Download className="w-5 h-5 text-true-white" />
               </div>
               <span className="font-display font-bold text-2xl tracking-tight text-white">
                 xrsave <span className="text-brand-500">YT</span>

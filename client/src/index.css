@@ -2,6 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Light Mode Variables override handled below */
+:root {
+  /* RGB values for Tailwind opacity support (<alpha-value>) */
+  --c-white: 255 255 255;
+  
+  --c-dark-950: 4 4 4;
+  --c-dark-900: 8 8 8;
+  --c-dark-800: 17 17 17;
+  --c-dark-700: 26 26 26;
+  --c-dark-600: 34 34 34;
+  --c-dark-500: 45 45 45;
+  --c-dark-400: 61 61 61;
+  
+  --c-gray-300: 209 213 219;
+  --c-gray-400: 156 163 175;
+  --c-gray-500: 107 114 128;
+  --c-gray-600: 75 85 99;
+}
+
+[data-theme='light'] {
+  --c-white: 15 23 42; /* #0f172a mapping */
+  
+  --c-dark-950: 241 245 249; /* #f1f5f9 - Grounding background (e.g. Footer) */
+  --c-dark-900: 248 250 252; /* #f8fafc - Body background */
+  --c-dark-800: 255 255 255; /* #ffffff - Cards popping out */
+  --c-dark-700: 241 245 249; /* #f1f5f9 - Hovers and Inputs */
+  --c-dark-600: 226 232 240; /* #e2e8f0 - Borders */
+  --c-dark-500: 203 213 225; /* #cbd5e1 - Muted borders */
+  --c-dark-400: 148 163 184; /* #94a3b8 - Secondary muted text */
+  
+  --c-gray-300: 30 41 59; /* #1e293b */
+  --c-gray-400: 71 85 105; /* #475569 */
+  --c-gray-500: 100 116 139; /* #64748b */
+  --c-gray-600: 148 163 184; /* #94a3b8 */
+}
+
+/* Ensure white text stays white inside brand colored backgrounds and components */
+
 @layer base {
   * {
     box-sizing: border-box;
@@ -13,8 +51,8 @@
 
   body {
     font-family: 'DM Sans', sans-serif;
-    background-color: #080808;
-    color: #ffffff;
+    background-color: rgb(var(--c-dark-900));
+    color: rgb(var(--c-white));
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -49,15 +87,22 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-brand-600 hover:bg-brand-500 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply bg-brand-600 hover:bg-brand-500 font-semibold px-6 py-3 rounded-xl transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+    color: #ffffff !important;
   }
 
   .btn-secondary {
-    @apply bg-dark-600 hover:bg-dark-500 text-white font-medium px-6 py-3 rounded-xl transition-all duration-200 border border-dark-400 active:scale-95;
+    @apply bg-dark-600 hover:bg-dark-500 font-medium px-6 py-3 rounded-xl transition-all duration-200 border border-dark-400 active:scale-95;
+    color: #ffffff;
   }
 
   .btn-ghost {
-    @apply text-gray-400 hover:text-white hover:bg-dark-700 px-4 py-2 rounded-lg transition-all duration-200;
+    @apply hover:bg-dark-700 px-4 py-2 rounded-lg transition-all duration-200;
+    color: #9ca3af;
+  }
+
+  .btn-ghost:hover {
+    color: #ffffff;
   }
 
   .card {
@@ -65,7 +110,12 @@
   }
 
   .input-field {
-    @apply w-full bg-dark-700 border border-dark-500 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/30 transition-all duration-200;
+    @apply w-full bg-dark-700 border border-dark-500 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500/30 transition-all duration-200;
+    color: #ffffff;
+  }
+
+  .input-field::placeholder {
+    color: #6b7280;
   }
 
   .skeleton {

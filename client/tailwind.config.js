@@ -10,6 +10,8 @@ export default {
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       colors: {
+        white: 'rgb(var(--c-white) / <alpha-value>)',
+        'true-white': '#ffffff',
         brand: {
           50: '#fff0f0',
           100: '#ffdddd',
@@ -23,12 +25,19 @@ export default {
           900: '#920909',
         },
         dark: {
-          900: '#080808',
-          800: '#111111',
-          700: '#1a1a1a',
-          600: '#222222',
-          500: '#2d2d2d',
-          400: '#3d3d3d',
+          950: 'rgb(var(--c-dark-950) / <alpha-value>)',
+          900: 'rgb(var(--c-dark-900) / <alpha-value>)',
+          800: 'rgb(var(--c-dark-800) / <alpha-value>)',
+          700: 'rgb(var(--c-dark-700) / <alpha-value>)',
+          600: 'rgb(var(--c-dark-600) / <alpha-value>)',
+          500: 'rgb(var(--c-dark-500) / <alpha-value>)',
+          400: 'rgb(var(--c-dark-400) / <alpha-value>)',
+        },
+        gray: {
+          300: 'rgb(var(--c-gray-300) / <alpha-value>)',
+          400: 'rgb(var(--c-gray-400) / <alpha-value>)',
+          500: 'rgb(var(--c-gray-500) / <alpha-value>)',
+          600: 'rgb(var(--c-gray-600) / <alpha-value>)',
         },
       },
       animation: {

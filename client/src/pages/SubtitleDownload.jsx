@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { FileText, ChevronDown } from 'lucide-react';
+import { Subtitles, ChevronDown } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import PageWrapper from '../components/ui/PageWrapper';
@@ -45,13 +45,19 @@ const SubtitleDownload = () => {
       </Helmet>
       <div className="max-w-2xl mx-auto px-4 pt-28 pb-20">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl mb-4">
-            <FileText className="w-7 h-7 text-white" />
+          <div className="w-16 h-16 bg-brand-600/20 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-brand-500/30">
+            <Subtitles className="w-8 h-8 text-brand-500" />
           </div>
           <h1 className="font-display text-3xl sm:text-4xl font-bold">Subtitle Downloader</h1>
           <p className="text-gray-400 mt-2">Download captions in SRT, VTT or plain text</p>
         </div>
         <div className="space-y-4">
+          <div className="bg-dark-800/50 border border-brand-500/20 rounded-2xl p-8 text-center backdrop-blur-sm relative overflow-hidden group shadow-[0_0_30px_rgba(239,68,68,0.05)]">
+            <div className="absolute inset-0 bg-gradient-to-br from-brand-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <h2 className="text-xl font-semibold text-white mb-2 relative z-10">We are working on this!</h2>
+            <p className="text-gray-400 text-sm relative z-10">This feature will be available very soon. Stay tuned!</p>
+          </div>
+          {/*
           <div className="card p-4">
             <label className="block text-xs text-gray-500 mb-2 font-medium uppercase tracking-wider">YouTube URL</label>
             <input type="url" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="https://youtube.com/watch?v=..." className="input-field" />
@@ -91,6 +97,7 @@ const SubtitleDownload = () => {
           <button onClick={handleDownload} disabled={!validUrl || isDownloading} className="w-full btn-primary py-4 disabled:opacity-50 disabled:cursor-not-allowed">
             {isDownloading ? 'Downloading...' : 'Download Subtitles'}
           </button>
+          */}
         </div>
       </div>
     </PageWrapper>
