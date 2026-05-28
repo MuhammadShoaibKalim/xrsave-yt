@@ -22,7 +22,7 @@ const historyRoutes = require('./routes/history.routes');
 
 const app = express();
 
-// ─── Security Middleware ────────────────────────────────────────────────────
+
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
